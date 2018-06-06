@@ -31,9 +31,25 @@ export class AppComponent implements OnInit{
       (status)=>{
         console.log(status);
     });
+    this.signupForm.setValue({
+      'userData':{
+        'username':'Max',
+        'email':'max@test.com'
+      },
+      'gender':'male',
+      'hobbies':[]
+    });
+
+    //set part of data
+    this.signupForm.patchValue({
+      'userData':{
+        'username':'Max'
+      },
+    });
   }
   onSubmit(){
     console.log(this.signupForm.status);
+    this.signupForm.reset({'gender':'male'});
   }
   onAddHobby(){
     const control = new FormControl(null,Validators.required);
